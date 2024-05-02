@@ -4,6 +4,7 @@ using CadastroVendas.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CadastroVendas.Migrations
 {
     [DbContext(typeof(CadastroVendasContext))]
-    partial class CadastroVendasContextModelSnapshot : ModelSnapshot
+    [Migration("20240502193745_primeiraMigrationUsuario")]
+    partial class primeiraMigrationUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

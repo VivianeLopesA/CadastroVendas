@@ -14,10 +14,8 @@ namespace CadastroVendas.Data
         {
         }
 
-        public DbSet<CadastroVendas.Models.ADM> ADM { get; set; } = default!;
+        public DbSet<CadastroVendas.Models.Usuario> ADM { get; set; } = default!;
         public DbSet<CadastroVendas.Models.Produto> Produto { get; set; } = default!;
-        public DbSet<CadastroVendas.Models.Cliente> Cliente { get; set; } = default!;
-        public DbSet<CadastroVendas.Models.Funcionario> Funcionario { get; set; } = default!;
         public DbSet<CadastroVendas.Models.Venda> Venda { get; set; } = default!;
     }
 }

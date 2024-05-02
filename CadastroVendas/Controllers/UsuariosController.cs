@@ -10,22 +10,22 @@ using CadastroVendas.Models;
 
 namespace CadastroVendas.Controllers
 {
-    public class ADMsController : Controller
+    public class UsuariosController : Controller
     {
         private readonly CadastroVendasContext _context;
 
-        public ADMsController(CadastroVendasContext context)
+        public UsuariosController(CadastroVendasContext context)
         {
             _context = context;
         }
 
-        // GET: ADMs
+        // GET: Usuarios
         public async Task<IActionResult> Index()
         {
             return View(await _context.ADM.ToListAsync());
         }
 
-        // GET: ADMs/Details/5
+        // GET: Usuarios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace CadastroVendas.Controllers
                 return NotFound();
             }
 
-            var aDM = await _context.ADM
-                .FirstOrDefaultAsync(m => m.ADMId == id);
-            if (aDM == null)
+            var usuario = await _context.ADM
+                .FirstOrDefaultAsync(m => m.UsuarioID == id);
+            if (usuario == null)
             {
                 return NotFound();
             }
 
-            return View(aDM);
+            return View(usuario);
         }
 
-        // GET: ADMs/Create
+        // GET: Usuarios/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: ADMs/Create
+        // POST: Usuarios/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ADMId,ADMName")] ADM aDM)
+        public async Task<IActionResult> Create([Bind("UsuarioID,ADMName,email,senha,ConfirmarSenha,nivelAcesso")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(aDM);
+                _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(aDM);
+            return View(usuario);
         }
 
-        // GET: ADMs/Edit/5
+        // GET: Usuarios/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace CadastroVendas.Controllers
                 return NotFound();
             }
 
-            var aDM = await _context.ADM.FindAsync(id);
-            if (aDM == null)
+            var usuario = await _context.ADM.FindAsync(id);
+            if (usuario == null)
             {
                 return NotFound();
             }
-            return View(aDM);
+            return View(usuario);
         }
 
-        // POST: ADMs/Edit/5
+        // POST: Usuarios/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ADMId,ADMName")] ADM aDM)
+        public async Task<IActionResult> Edit(int id, [Bind("UsuarioID,ADMName,email,senha,ConfirmarSenha,nivelAcesso")] Usuario usuario)
         {
-            if (id != aDM.ADMId)
+            if (id != usuario.UsuarioID)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace CadastroVendas.Controllers
             {
                 try
                 {
-                    _context.Update(aDM);
+                    _context.Update(usuario);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ADMExists(aDM.ADMId))
+                    if (!UsuarioExists(usuario.UsuarioID))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace CadastroVendas.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(aDM);
+            return View(usuario);
         }
 
-        // GET: ADMs/Delete/5
+        // GET: Usuarios/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,34 +124,34 @@ namespace CadastroVendas.Controllers
                 return NotFound();
             }
 
-            var aDM = await _context.ADM
-                .FirstOrDefaultAsync(m => m.ADMId == id);
-            if (aDM == null)
+            var usuario = await _context.ADM
+                .FirstOrDefaultAsync(m => m.UsuarioID == id);
+            if (usuario == null)
             {
                 return NotFound();
             }
 
-            return View(aDM);
+            return View(usuario);
         }
 
-        // POST: ADMs/Delete/5
+        // POST: Usuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var aDM = await _context.ADM.FindAsync(id);
-            if (aDM != null)
+            var usuario = await _context.ADM.FindAsync(id);
+            if (usuario != null)
             {
-                _context.ADM.Remove(aDM);
+                _context.ADM.Remove(usuario);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ADMExists(int id)
+        private bool UsuarioExists(int id)
         {
-            return _context.ADM.Any(e => e.ADMId == id);
+            return _context.ADM.Any(e => e.UsuarioID == id);
         }
     }
 }

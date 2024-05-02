@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CadastroVendas.Migrations
 {
     [DbContext(typeof(CadastroVendasContext))]
-    [Migration("20240502145131_quintaMigrationCliente")]
-    partial class quintaMigrationCliente
+    [Migration("20240502192843_createDB")]
+    partial class createDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,22 +24,6 @@ namespace CadastroVendas.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("CadastroVendas.Models.ADM", b =>
-                {
-                    b.Property<int>("ADMId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ADMId"));
-
-                    b.Property<string>("ADMName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ADMId");
-
-                    b.ToTable("ADM");
-                });
 
             modelBuilder.Entity("CadastroVendas.Models.Cliente", b =>
                 {
@@ -66,7 +50,6 @@ namespace CadastroVendas.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Complemento")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Numero")
@@ -85,6 +68,23 @@ namespace CadastroVendas.Migrations
                     b.HasKey("ClienteId");
 
                     b.ToTable("Cliente");
+                });
+
+            modelBuilder.Entity("CadastroVendas.Models.Funcionario", b =>
+                {
+                    b.Property<int>("FuncionarioId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FuncionarioId"));
+
+                    b.Property<string>("FuncionarioName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("FuncionarioId");
+
+                    b.ToTable("Funcionario");
                 });
 
             modelBuilder.Entity("CadastroVendas.Models.Produto", b =>
@@ -110,6 +110,74 @@ namespace CadastroVendas.Migrations
                     b.HasKey("ProdutoID");
 
                     b.ToTable("Produto");
+                });
+
+            modelBuilder.Entity("CadastroVendas.Models.Usuario", b =>
+                {
+                    b.Property<int>("UsuarioID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UsuarioID"));
+
+                    b.Property<string>("ADMName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConfirmarSenha")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("nivelAcesso")
+                        .HasColumnType("int");
+
+                    b.Property<string>("senhad")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.HasKey("UsuarioID");
+
+                    b.ToTable("ADM");
+                });
+
+            modelBuilder.Entity("CadastroVendas.Models.Venda", b =>
+                {
+                    b.Property<int>("VendaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VendaId"));
+
+                    b.Property<string>("Cliente")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DataHoraVenda")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Funcionario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Produto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("valorUnidade")
+                        .IsRequired()
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("VendaId");
+
+                    b.ToTable("Venda");
                 });
 #pragma warning restore 612, 618
         }
