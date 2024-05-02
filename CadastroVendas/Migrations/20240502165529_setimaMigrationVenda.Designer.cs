@@ -4,6 +4,7 @@ using CadastroVendas.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CadastroVendas.Migrations
 {
     [DbContext(typeof(CadastroVendasContext))]
-    partial class CadastroVendasContextModelSnapshot : ModelSnapshot
+    [Migration("20240502165529_setimaMigrationVenda")]
+    partial class setimaMigrationVenda
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,21 +137,18 @@ namespace CadastroVendas.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VendaId"));
 
-                    b.Property<string>("Cliente")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DataHoraVenda")
                         .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Funcionario")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Produto")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ProdutoID")
+                        .HasColumnType("int");
 
                     b.Property<int>("Quantidade")
                         .HasColumnType("int");
@@ -159,7 +159,40 @@ namespace CadastroVendas.Migrations
 
                     b.HasKey("VendaId");
 
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.HasIndex("ProdutoID");
+
                     b.ToTable("Venda");
+                });
+
+            modelBuilder.Entity("CadastroVendas.Models.Venda", b =>
+                {
+                    b.HasOne("CadastroVendas.Models.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CadastroVendas.Models.Funcionario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CadastroVendas.Models.Produto", "Produto")
+                        .WithMany()
+                        .HasForeignKey("ProdutoID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Funcionario");
+
+                    b.Navigation("Produto");
                 });
 #pragma warning restore 612, 618
         }
