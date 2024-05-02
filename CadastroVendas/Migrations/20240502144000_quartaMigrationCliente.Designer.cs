@@ -4,6 +4,7 @@ using CadastroVendas.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CadastroVendas.Migrations
 {
     [DbContext(typeof(CadastroVendasContext))]
-    partial class CadastroVendasContextModelSnapshot : ModelSnapshot
+    [Migration("20240502144000_quartaMigrationCliente")]
+    partial class quartaMigrationCliente
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,6 +59,7 @@ namespace CadastroVendas.Migrations
                         .HasColumnType("nvarchar(8)");
 
                     b.Property<string>("Cidade")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClienteName")
@@ -82,23 +86,6 @@ namespace CadastroVendas.Migrations
                     b.HasKey("ClienteId");
 
                     b.ToTable("Cliente");
-                });
-
-            modelBuilder.Entity("CadastroVendas.Models.Funcionario", b =>
-                {
-                    b.Property<int>("FuncionarioId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FuncionarioId"));
-
-                    b.Property<string>("FuncionarioName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("FuncionarioId");
-
-                    b.ToTable("Funcionario");
                 });
 
             modelBuilder.Entity("CadastroVendas.Models.Produto", b =>
