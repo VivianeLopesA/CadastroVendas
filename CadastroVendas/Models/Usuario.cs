@@ -26,7 +26,7 @@ namespace CadastroVendas.Models
 
         [Display(Name = "Nível de acesso")]
         [Required]
-        [Range(1 , 3 , ErrorMessage = "Os níveis de acesso disponíveis são: 1 - Usuario , 2 - Funcionário , 3 - Cliente")]
+        [Range(1 , 3 , ErrorMessage = "Os níveis de acesso disponíveis são: 1 - ADM , 2 - Funcionário , 3 - Cliente")]
         public int nivelAcesso { get; set; }    
     }
 }

@@ -13,7 +13,7 @@ namespace CadastroVendas.Models
         [Required]
         public int? Quantidade { get; set; }
 
-        [Display(Name = "Preço")]
+        [Display(Name = "Preço por unidade")]
         [Required]
         public decimal? PrecoUnidade { get; set; }
 
