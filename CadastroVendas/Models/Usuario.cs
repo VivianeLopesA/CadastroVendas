@@ -12,6 +12,7 @@ namespace CadastroVendas.Models
 
         [Display(Name = "E-mail")]
         [Required]
+        [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "O email não é válido.")]
         public string? email {  get; set; }
 
         [Display(Name = "Senha")]
