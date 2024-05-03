@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\DecolaTech\\Aula13\\SistemaVendas\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4BB3B2FD-8BFA-4A0B-8D34-D8EB4517EEBD}|CadastroVendas\\CadastroVendas.csproj|c:\\decolatech\\aula13\\sistemavendas\\cadastrovendas\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB3B2FD-8BFA-4A0B-8D34-D8EB4517EEBD}|CadastroVendas\\CadastroVendas.csproj|solutionrelative:cadastrovendas\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4BB3B2FD-8BFA-4A0B-8D34-D8EB4517EEBD}|CadastroVendas\\CadastroVendas.csproj|c:\\decolatech\\aula13\\sistemavendas\\cadastrovendas\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{4BB3B2FD-8BFA-4A0B-8D34-D8EB4517EEBD}|CadastroVendas\\CadastroVendas.csproj|solutionrelative:cadastrovendas\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
@@ -19,6 +23,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\DecolaTech\\Aula13\\SistemaVendas\\CadastroVendas\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "CadastroVendas\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\DecolaTech\\Aula13\\SistemaVendas\\CadastroVendas\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "CadastroVendas\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAuwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T14:37:37.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\DecolaTech\\Aula13\\SistemaVendas\\CadastroVendas\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "CadastroVendas\\Views\\Shared\\_Layout.cshtml",
@@ -26,8 +43,7 @@
               "RelativeToolTip": "CadastroVendas\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AQIAABUAAAAAAAAAAAAAACAAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-03T14:16:38.415Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-03T14:16:38.415Z"
             }
           ]
         }
